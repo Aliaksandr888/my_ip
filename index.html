@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+</head>
+
+<body>
+    <input type="button" id='my_input' value='ip'>
+    <div id='my_ip'></div>
+    <script>
+        let myIp = document.querySelector('#my_ip');
+        window.onload = function () {
+            let input = document.querySelector('#my_input');
+            input.onclick = function () {
+                ajaxGet();
+            }
+
+        }
+        function ajaxGet() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    muIp.innerHTML = xhr.responseText
+                }
+            }
+            xhr.open('GET', 'https://aliaksandr888.github.io/my_ip/');
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>
